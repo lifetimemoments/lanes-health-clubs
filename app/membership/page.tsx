@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
 import { PageHero } from "@/components/sections/page-hero";
-import { CTABand } from "@/components/sections/cta-band";
+import { TourForm } from "@/components/sections/tour-form";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button";
@@ -35,8 +35,15 @@ export default function MembershipPage() {
           {headlineMemberships.map((m, i) => (
             <Reveal key={m.name} delay={i * 0.08} className="bg-ink">
               <article className={`flex h-full flex-col p-8 md:p-12 ${m.featured ? "bg-ink-3" : ""}`}>
-                <div className="flex items-start justify-between">
-                  <p className="eyebrow text-lanes">{m.name}</p>
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="eyebrow text-lanes">{m.name}</p>
+                    {m.promo && (
+                      <p className="mt-2 inline-block bg-flame/15 px-2 py-1 text-[0.58rem] font-bold uppercase tracking-[0.18em] text-flame">
+                        50% off joining fee
+                      </p>
+                    )}
+                  </div>
                   {m.featured && (
                     <span className="bg-lanes px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.18em] text-ink">
                       Most popular
@@ -87,6 +94,11 @@ export default function MembershipPage() {
               <Reveal key={m.name} delay={i * 0.05} className="bg-ink-2">
                 <article className="flex h-full flex-col p-7 transition-colors duration-500 hover:bg-ink-3">
                   <p className="eyebrow text-lanes">{m.name}</p>
+                  {m.promo && (
+                    <p className="mt-2 inline-block w-fit bg-flame/15 px-2 py-1 text-[0.55rem] font-bold uppercase tracking-[0.16em] text-flame">
+                      50% off joining fee
+                    </p>
+                  )}
                   <p className="mt-5 font-display text-4xl font-light text-cream">
                     {m.price}
                     {m.cadence && (
@@ -108,12 +120,13 @@ export default function MembershipPage() {
                     {m.term && <p className="mt-1 text-[0.72rem] text-fog">{m.term}</p>}
                     {m.note && <p className="mt-1 text-[0.72rem] text-fog">{m.note}</p>}
                     <a
-                      href={site.joinOnline}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={m.cta?.href ?? site.joinOnline}
+                      {...(m.cta?.external || !m.cta
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                       className="mt-4 inline-block text-[0.68rem] font-bold uppercase tracking-[0.2em] text-cream underline decoration-lanes underline-offset-4 transition-colors hover:text-lanes"
                     >
-                      Get started
+                      {m.cta?.label ?? "Get started"}
                     </a>
                   </div>
                 </article>
@@ -126,11 +139,22 @@ export default function MembershipPage() {
         </div>
       </section>
 
-      <CTABand
-        title="Not sure? Come and see it for yourself"
-        body="Book a tour and our team will show you around the gym, pool, studios and Wellness Rooms — and help you find the membership that's right for you."
-        cta={{ label: "Book a tour", href: "/book-a-tour" }}
-      />
+      {/* Book a tour — same form as the live site */}
+      <section className="border-t border-line">
+        <div className="mx-auto grid max-w-[1400px] gap-14 px-5 py-24 md:px-8 md:py-32 lg:grid-cols-[1fr_1.4fr]">
+          <SectionHeading
+            index="03"
+            eyebrow="Book a tour"
+            title="Experience Lanes for yourself"
+            description="Book a tour today and explore everything we have to offer — the state-of-the-art fitness facilities, relaxing wellness areas and dynamic group classes. Our team will answer any questions about memberships and amenities, and help you reach your wellness goals."
+          />
+          <Reveal delay={0.15}>
+            <div className="border border-line bg-ink-2 p-8 md:p-12">
+              <TourForm />
+            </div>
+          </Reveal>
+        </div>
+      </section>
     </>
   );
 }

@@ -5,8 +5,10 @@ export type Membership = {
   joiningFee?: string;
   term?: string;
   featured?: boolean;
+  promo?: boolean;
   includes: string[];
   note?: string;
+  cta?: { label: string; href: string; external?: boolean };
 };
 
 const standardIncludes = [
@@ -24,6 +26,7 @@ export const headlineMemberships: Membership[] = [
     joiningFee: "£37.50 joining fee",
     term: "12 months minimum term",
     featured: true,
+    promo: true,
     includes: standardIncludes,
   },
   {
@@ -32,6 +35,7 @@ export const headlineMemberships: Membership[] = [
     cadence: "/month",
     joiningFee: "£37.50 joining fee",
     term: "3 months minimum term",
+    promo: true,
     includes: standardIncludes,
   },
   {
@@ -39,6 +43,7 @@ export const headlineMemberships: Membership[] = [
     price: "£925",
     joiningFee: "£37.50 joining fee",
     term: "12 months — paid in full",
+    promo: true,
     includes: standardIncludes,
   },
 ];
@@ -49,6 +54,7 @@ export const moreMemberships: Membership[] = [
     price: "£525",
     cadence: "upfront",
     joiningFee: "£37.50 joining fee",
+    promo: true,
     includes: standardIncludes,
   },
   {
@@ -58,6 +64,7 @@ export const moreMemberships: Membership[] = [
     joiningFee: "£50 joining fee (subject to employer)",
     term: "12 months minimum term",
     includes: standardIncludes,
+    cta: { label: "More info", href: "/contact" },
   },
   {
     name: "Blue Light Card",
@@ -74,6 +81,7 @@ export const moreMemberships: Membership[] = [
     joiningFee: "£50 joining fee",
     term: "3 months minimum term",
     includes: standardIncludes,
+    cta: { label: "More info", href: "/contact" },
   },
   {
     name: "Monthly Flexible",
@@ -87,7 +95,7 @@ export const moreMemberships: Membership[] = [
     price: "£82",
     cadence: "per person /month",
     joiningFee: "£75 joining fee — min. 2 people joining",
-    term: "12 months minimum term",
+    term: "12 months minimum term — other offers not valid",
     includes: standardIncludes,
   },
   {
@@ -99,14 +107,16 @@ export const moreMemberships: Membership[] = [
       "All-day access",
       "Gym, pool, jacuzzi, sauna & steam",
     ],
+    cta: { label: "Guest pass info", href: "/faqs" },
   },
   {
     name: "Movement Is Medicine",
     price: "£120",
     cadence: "/month",
     joiningFee: "£50 joining fee",
-    note: "GP referral required — contact the membership team",
+    note: "GP referral required",
     includes: ["Regular assessments", "Clinical-condition support programme"],
+    cta: { label: "Contact membership team", href: "mailto:membership@laneshealthclubs.co.uk", external: true },
   },
 ];
 
