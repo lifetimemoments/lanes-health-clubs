@@ -10,7 +10,6 @@ import {
   moreMemberships,
   membershipFootnote,
 } from "@/lib/data/memberships";
-import { site } from "@/lib/data/site";
 
 export const metadata: Metadata = {
   title: "Membership",
@@ -66,8 +65,7 @@ export default function MembershipPage() {
                 </ul>
                 <div className="mt-9">
                   <ButtonLink
-                    href={site.joinOnline}
-                    external
+                    href="/book-a-tour"
                     variant={m.featured ? "primary" : "outline"}
                     className="w-full justify-center"
                   >
@@ -120,8 +118,8 @@ export default function MembershipPage() {
                     {m.term && <p className="mt-1 text-[0.72rem] text-fog">{m.term}</p>}
                     {m.note && <p className="mt-1 text-[0.72rem] text-fog">{m.note}</p>}
                     <a
-                      href={m.cta?.href ?? site.joinOnline}
-                      {...(m.cta?.external || !m.cta
+                      href={m.cta?.href ?? "/book-a-tour"}
+                      {...(m.cta?.external
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}
                       className="mt-4 inline-block text-[0.68rem] font-bold uppercase tracking-[0.2em] text-cream underline decoration-lanes underline-offset-4 transition-colors hover:text-lanes"

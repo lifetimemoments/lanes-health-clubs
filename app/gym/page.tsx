@@ -7,7 +7,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { trainers } from "@/lib/data/trainers";
-import { site } from "@/lib/data/site";
 import { RevealImage } from "@/components/ui/reveal-image";
 
 export const metadata: Metadata = {
@@ -105,8 +104,8 @@ export default function GymPage() {
                 ))}
               </ul>
               <div className="mt-9 flex flex-wrap gap-4">
-                <ButtonLink href={site.joinOnline} external>
-                  View PT packages
+                <ButtonLink href="/contact">
+                  Enquire about PT
                 </ButtonLink>
                 <ButtonLink href="/classes" variant="outline">
                   Prefer group training?

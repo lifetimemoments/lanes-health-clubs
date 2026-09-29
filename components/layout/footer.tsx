@@ -155,22 +155,12 @@ export function Footer() {
             <Link href="/contact" className="transition-colors hover:text-cream">
               Contact us
             </Link>
-            <a
-              href="https://laneshealthclubs.co.uk/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-cream"
-            >
+            <Link href="/faqs" className="transition-colors hover:text-cream">
               Terms &amp; Conditions
-            </a>
-            <a
-              href="https://laneshealthclubs.co.uk/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-cream"
-            >
+            </Link>
+            <Link href="/contact" className="transition-colors hover:text-cream">
               Careers
-            </a>
+            </Link>
           </div>
         </div>
       </div>
