@@ -17,7 +17,7 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://laneshealthclubs.co.uk"),
+  metadataBase: new URL("https://lanesdemo.netlify.app"),
   title: {
     default: "Lanes Health Clubs — Premium Health Club in Rustington",
     template: "%s | Lanes Health Clubs",
